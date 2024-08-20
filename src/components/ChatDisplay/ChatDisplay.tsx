@@ -18,7 +18,11 @@ const Messages = ({ messages }: { messages: Message[] }) => {
       <ChatMessage key={message.createdAt} message={message} />
     ));
   } else {
-    return <Typography align="center">No messages</Typography>;
+    return (
+      <Typography data-testid="no-message-info" align="center">
+        No messages
+      </Typography>
+    );
   }
 };
 

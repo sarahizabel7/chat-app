@@ -47,4 +47,16 @@ describe("ChatDisplay", () => {
     const chatMessage = screen.getAllByTestId("chat-message");
     expect(chatMessage).toHaveLength(messages.length);
   });
+
+  test("renders no message info text when messages are not available", () => {
+    (useMessages as Mock).mockReturnValue({
+      loading: false,
+      messages: [],
+    });
+
+    render(<ChatDisplay />);
+
+    const noMessage = screen.getAllByTestId("no-message-info");
+    expect(noMessage).toHaveLength(1);
+  });
 });
